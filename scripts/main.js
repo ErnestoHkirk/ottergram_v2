@@ -49,45 +49,43 @@ function addThumbClickHandler(thumb) {
 function addArrowClickHandler(thumbnails) {
     'use strict';
     var leftArrow = document.querySelector(LEFT_ARROW_SELECTOR);
-    var rightArrow= document.querySelector(RIGHT_ARROW_SELECTOR);
-    leftArrow.addEventListener("click", function(){ 
+    var rightArrow = document.querySelector(RIGHT_ARROW_SELECTOR);
+    leftArrow.addEventListener("click", function () {
         console.log("Left!");
         var i;
-        for (i = 0; i < thumbnails.length; i++){
-            if(thumbnails[i] === CURR_INDEX){
+        for (i = 0; i < thumbnails.length; i++) {
+            if (thumbnails[i] === CURR_INDEX) {
                 console.log(i);
-                if((i-1) < 0){
-                    setDetailsFromThumb(thumbnails[thumbnails.length-1]);
-                    CURR_INDEX = thumbnails[thumbnails.length-1];
+                if ((i - 1) < 0) {
+                    setDetailsFromThumb(thumbnails[thumbnails.length - 1]);
+                    CURR_INDEX = thumbnails[thumbnails.length - 1];
                     return;
-                }
-                else{
-                    setDetailsFromThumb(thumbnails[i-1]);
-                    CURR_INDEX = thumbnails[i-1];
+                } else {
+                    setDetailsFromThumb(thumbnails[i - 1]);
+                    CURR_INDEX = thumbnails[i - 1];
                     return;
                 }
             }
         }
     });
-    rightArrow.addEventListener("click", function(){ 
+    rightArrow.addEventListener("click", function () {
         console.log("Right!");
         var i;
-        for (i = 0; i < thumbnails.length; i++){
-            if(thumbnails[i] === CURR_INDEX){
+        for (i = 0; i < thumbnails.length; i++) {
+            if (thumbnails[i] === CURR_INDEX) {
                 console.log(i);
-                if((i+1) >= thumbnails.length){
+                if ((i + 1) >= thumbnails.length) {
                     setDetailsFromThumb(thumbnails[0]);
                     CURR_INDEX = thumbnails[0];
                     return;
-                }
-                else{
-                    setDetailsFromThumb(thumbnails[i+1]);
-                    CURR_INDEX = thumbnails[i+1];
+                } else {
+                    setDetailsFromThumb(thumbnails[i + 1]);
+                    CURR_INDEX = thumbnails[i + 1];
                     return;
                 }
             }
         }
-    });  
+    });
 }
 
 function getThumbnailsArray() {
@@ -107,18 +105,19 @@ function showDetails() {
     var frame = document.querySelector(DETAIL_FRAME_SELECTOR);
     document.body.classList.remove(HIDDEN_DETAIL_CLASS)
     frame.classList.add(TINY_EFFECT_CLASS);
-    setTimeout(function() {
+    setTimeout(function () {
         frame.classList.remove(TINY_EFFECT_CLASS);
     }, 50);
 }
 
-function addKeyPressHandler () {
+function addKeyPressHandler() {
     'use strict';
     document.body.addEventListener('keyup', function (event) {
         event.preventDefault();
         console.log(event.keyCode);
-        if (event.keyCode === ESC_KEY) { 
-            hideDetails(); }
+        if (event.keyCode === ESC_KEY) {
+            hideDetails();
+        }
     });
 }
 
@@ -137,4 +136,3 @@ function initializeEvents() {
 }
 
 initializeEvents();
-
