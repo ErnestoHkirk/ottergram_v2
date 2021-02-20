@@ -1,3 +1,6 @@
+/*jslint browser */
+/*jslint devel: true */
+
 var DETAIL_IMAGE_SELECTOR = '[data-image-role="target"]';
 var DETAIL_TITLE_SELECTOR = '[data-image-role="title"]';
 var DETAIL_FRAME_SELECTOR = '[data-image-role="frame"]';
@@ -33,6 +36,16 @@ function titleFromThumb(thumbnail) {
 function setDetailsFromThumb(thumbnail) {
     'use strict';
     setDetails(imageFromThumb(thumbnail), titleFromThumb(thumbnail));
+}
+
+function showDetails() {
+    'use strict';
+    var frame = document.querySelector(DETAIL_FRAME_SELECTOR);
+    document.body.classList.remove(HIDDEN_DETAIL_CLASS);
+    frame.classList.add(TINY_EFFECT_CLASS);
+    setTimeout(function () {
+        frame.classList.remove(TINY_EFFECT_CLASS);
+    }, 50);
 }
 
 function addThumbClickHandler(thumb) {
@@ -100,15 +113,7 @@ function hideDetails() {
     document.body.classList.add(HIDDEN_DETAIL_CLASS);
 }
 
-function showDetails() {
-    'use strict';
-    var frame = document.querySelector(DETAIL_FRAME_SELECTOR);
-    document.body.classList.remove(HIDDEN_DETAIL_CLASS)
-    frame.classList.add(TINY_EFFECT_CLASS);
-    setTimeout(function () {
-        frame.classList.remove(TINY_EFFECT_CLASS);
-    }, 50);
-}
+
 
 function addKeyPressHandler() {
     'use strict';
